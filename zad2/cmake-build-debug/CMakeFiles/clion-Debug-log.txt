@@ -1,1 +1,0 @@
-CMakeLists.txt not found in C:\Users\goddammit\Documents\GitHub\laba1\zad2 Select CMakeLists.txt
