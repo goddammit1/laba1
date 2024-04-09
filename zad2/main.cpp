@@ -11,6 +11,14 @@ public:
 
     ~logical_values_array(){}
 
+    logical_values_array& operator= (logical_values_array const &other){
+        if(this != &other){
+            _value = other._value;
+        }
+        return *this;
+    }
+
+
     // Accessor для поля value
     unsigned int get_value() const {
         return _value;
@@ -43,17 +51,17 @@ public:
 
     // Сложение по модулю 2
     logical_values_array modulo2_sum(const logical_values_array &other) const {
-        return logical_values_array((_value + other._value) % 2);
+        return logical_values_array(this->conjunction(other.invert()).disjunction(this->invert().conjunction(other)));
     }
 
     // Эквивалентность
     logical_values_array equivalence(const logical_values_array &other) const {
-        return invert().modulo2_sum(other.invert()).invert();
+        return modulo2_sum(other).invert();
     }
 
     // Стрелка Пирса
     logical_values_array pierce_arrow(const logical_values_array &other) const {
-        return invert().conjunction(other.invert());
+        return disjunction(other).invert();
     }
 
     // Штрих Шеффера
