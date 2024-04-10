@@ -73,11 +73,7 @@ public:
         delete[] matrix;
     }
 
-    double *operator[](size_t index) {
-        return matrix[index];
-    }
-
-    double &operator()(size_t i, size_t j) {
+    double &operator[](size_t i, size_t j) {
         return matrix[i][j];
     }
 
@@ -110,7 +106,7 @@ public:
     }
 
 
-    Matrix multiplyByScalar(double scalar) {
+    Matrix multiplyScalar(double scalar) {
         Matrix result(size);
         for (size_t i = 0; i < size; ++i) {
             for (size_t j = 0; j < size; ++j) {
@@ -164,7 +160,6 @@ public:
             }
 
             if (maxRow != i) {
-                // Swap the rows
                 for (size_t k = 0; k < size; ++k) {
                     std::swap(temp.matrix[i][k], temp.matrix[maxRow][k]);
                 }
