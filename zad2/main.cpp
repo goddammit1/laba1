@@ -51,7 +51,7 @@ public:
 
     // Сложение по модулю 2
     logical_values_array modulo2_sum(const logical_values_array &other) const {
-        return logical_values_array(this->conjunction(other.invert()).disjunction(this->invert().conjunction(other)));
+        return conjunction(other.invert()).disjunction(invert().conjunction(other));
     }
 
     // Эквивалентность
